@@ -1,5 +1,5 @@
 # tool for keeping a diary log based on questions specified and asked by the user
-# added line to test pr set up on repo
+
 
 from os import linesep
 import sys
