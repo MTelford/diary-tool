@@ -59,28 +59,28 @@ def get_questions_from_user():
 
 
 
-def ask_and_await_answer(question, file_path):
+def ask_and_await_answer(question_list, file_path):
 
     """asks question, waits for answer, then takes date/time, question and answer
-    and stores in a log file"""
+    and stores in a log file with appropriate line spacing for readability"""
     
     #??
-    if question == []:
+    if question_list == []:
         return 'No questions, run arg input'
 
-    # asks question
     line_spaces = "\n\n"
-    answer = input(line_spaces + question + line_spaces)    
     
-    # TAKES ANSWER AND WRITES DATE/TIME, QUESTION AND ANSWER TO SPECIFIED FILE    
-     
-    # opens file as file object using append parameter
+    # TAKES ANSWER AND WRITES DATE/TIME, QUESTION AND ANSWER TO SPECIFIED FILE
     
+    for i in range(0, len(question_list)):
+        
+        answer = input(line_spaces + question_list[i] + line_spaces)
+        
+        # outputs log in correct format for user to log file
+        file_path.write(get_datetime_as_string() + line_spaces 
+        + question_list[i] + line_spaces + answer)    
 
-    # adds datetime, question and answer to file
-    file_path.write(get_datetime_as_string() + line_spaces 
-    + question + line_spaces + answer + line_spaces)    
-
+    
 
 
 def format_lines_from_file():
@@ -142,9 +142,11 @@ if exists(questions_file_path):
             # opens file as file object using append parameter
             destination_file = open(log_file_path,'a')
 
-            for i in range(0, len(users_question_list)):
-                print(users_question_list[i])
-                ask_and_await_answer(users_question_list[i], destination_file)
+            # for i in range(0, len(users_question_list)):
+                
+            #     ask_and_await_answer(users_question_list[i], destination_file)
+
+            ask_and_await_answer(users_question_list, destination_file)
             
             destination_file.close()
 
