@@ -59,10 +59,10 @@ def get_questions_from_user():
 
 
 
-def ask_and_await_answer(question):
+def ask_and_await_answer(question, file_path):
 
     """asks question, waits for answer, then takes date/time, question and answer
-    and stores in a file"""
+    and stores in a log file"""
     
     #??
     if question == []:
@@ -70,19 +70,16 @@ def ask_and_await_answer(question):
 
     # asks question
     line_spaces = "\n\n"
-    answer = input(line_spaces + question + line_spaces)
+    answer = input(line_spaces + question + line_spaces)    
     
-    
-    # TAKES ANSWER AND WRITES DATE/TIME, QUESTION AND ANSWER TO SPECIFIED FILE
-    
+    # TAKES ANSWER AND WRITES DATE/TIME, QUESTION AND ANSWER TO SPECIFIED FILE    
+     
     # opens file as file object using append parameter
-    destination_file = open(log_file_path,'a')
     
+
     # adds datetime, question and answer to file
-    destination_file.write(get_datetime_as_string() + line_spaces 
-    + question + line_spaces + answer + line_spaces)
-    
-    destination_file.close()
+    file_path.write(get_datetime_as_string() + line_spaces 
+    + question + line_spaces + answer + line_spaces)    
 
 
 
@@ -108,7 +105,7 @@ log_file_path_append = open(log_file_path, "a")
 
 
 
-# checks if file exists, if so adds contents of lines to list of questions
+# checks if users questions file exists, if so adds contents of lines to list of questions
 
 if exists(questions_file_path):
     users_question_list = format_lines_from_file()
@@ -142,9 +139,14 @@ if exists(questions_file_path):
 
         elif sys.argv[1] == 'ask':
 
+            # opens file as file object using append parameter
+            destination_file = open(log_file_path,'a')
+
             for i in range(0, len(users_question_list)):
                 print(users_question_list[i])
-                ask_and_await_answer(users_question_list[i])
+                ask_and_await_answer(users_question_list[i], destination_file)
+            
+            destination_file.close()
 
 
         # clears the users question file
