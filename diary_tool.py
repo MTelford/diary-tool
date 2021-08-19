@@ -3,6 +3,7 @@
 # import used for os specific line seperations
 from os import linesep
 
+# import used to check wether users file already exists or needs to be specified
 import sys
 from os.path import exists
 
