@@ -1,10 +1,5 @@
-
-# modified this line to emulate branch work
-
-# changed line to test branch merging
-
-# modified this line again to test merges
-
+# tool for keeping a diary log based on questions specified and asked by the user
+# added line to test pr set up on repo
 
 from os import linesep
 import sys
