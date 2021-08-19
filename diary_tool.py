@@ -65,7 +65,7 @@ def ask_and_await_answer(question_list):
     and stores in a log file with appropriate line spacing for readability"""
     
     #??
-    if question_list == []:
+    if question_list == None:
         return 'No questions, run arg input'
 
     line_spaces = "\n\n"
@@ -76,20 +76,21 @@ def ask_and_await_answer(question_list):
     # opens file as file object using append parameter
     destination_file = open(log_file_path,'a')
 
-    counter = 1
-    print(question_list)
     for i in range(0, len(question_list)): 
 
-        counter += 1
+        
         answer = input(line_spaces + question_list[i] + line_spaces)
         
         # outputs log in correct format for user to log file
        
-        destination_file.write(datetime + line_spaces 
+        destination_file.write(line_spaces + datetime + line_spaces 
         + question_list[i] + line_spaces + answer + line_spaces)
+        
     
-    print(counter)  
     destination_file.close()
+    
+    #add extra line space in terminal for cleanliness
+    print('\n')
         
 
 
@@ -101,13 +102,11 @@ def format_lines_from_file():
     """formatting used for questions list"""
     
     text_lines = questions_file_path_read.read().split('\n')
-    # removes new lines from each element in the list before returning
+
+    # filters unwanted empty elements from list (streamlines ask command functionality)   
+    res = list(filter(None, text_lines))
+    return res
     
-    print(text_lines)
-    for i in range(0, len(text_lines)):
-        print(i)
-        if text_lines[i] == '':
-            text_lines.remove(text_lines[i])
 
     
 
