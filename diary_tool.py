@@ -1,4 +1,6 @@
-# tool for keeping a diary log based on questions specified and asked by the user
+
+# TOOL FOR KEEPING A DIARY LOG BASED ON QUESTIONS SPECIFIED AND ASKED BY THE USER
+
 
 # import used for os specific line seperations
 from os import linesep
@@ -44,9 +46,10 @@ def get_questions_from_user():
 
     flag = True
     question_list = []
+    line_spaces = '\n\n'
     
     while flag:
-        users_question = (input('\n\n' + 'Enter your question here, or type QUIT \n\n' + ''))
+        users_question = (input(line_spaces + 'Enter your question here, or type QUIT ' + line_spaces))
         if users_question == 'QUIT':
             flag = False
         else:
