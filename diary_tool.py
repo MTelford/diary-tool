@@ -1,10 +1,13 @@
 # tool for keeping a diary log based on questions specified and asked by the user
 
-
+# import used for os specific line seperations
 from os import linesep
+
 import sys
 from os.path import exists
 
+
+# import used for asking user to specify file location
 import tkinter as tk
 from tkinter import filedialog
 
@@ -75,12 +78,12 @@ def ask_and_await_answer(question):
     + question + line_spaces + answer + line_spaces)
     
     destination_file.close()
-    
-
 
 
 
 def format_lines_from_file():
+
+    """"""
 
     text_lines = questions_file_path_read.readlines()
     # removes new lines from each element in the list before returning
@@ -106,6 +109,11 @@ if exists(questions_file_path):
     users_question_list = format_lines_from_file()
     
 
+    """ THIS AREA takes CLI args to specify which functionality user wants, as follows:
+        'input' to update questions
+        'ask' to ask the questions user has stored previously
+        'clearq' to clear all the users questions
+        'reset' to delete all log entries and start over """
 
     if len(sys.argv) < 2:
         print('No argument given. Please use "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch')
