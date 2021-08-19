@@ -78,7 +78,7 @@ def ask_and_await_answer(question):
     
 
 
-# main script
+
 
 def format_lines_from_file():
 
@@ -88,11 +88,7 @@ def format_lines_from_file():
     
 
 
-# if file exists:
-    # question list = read data from file
-# else:
-    # create file
-    # question list = read data from file
+
 
 questions_file_path = r"/home/michael-engineer/projects/diary_tool/questions"
 log_file_path = r"/home/michael-engineer/projects/diary_tool/test_file"
