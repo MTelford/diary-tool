@@ -59,7 +59,7 @@ def get_questions_from_user():
 
 
 
-def ask_and_await_answer(question_list, file_path):
+def ask_and_await_answer(question_list):
 
     """asks question, waits for answer, then takes date/time, question and answer
     and stores in a log file with appropriate line spacing for readability"""
@@ -69,25 +69,39 @@ def ask_and_await_answer(question_list, file_path):
         return 'No questions, run arg input'
 
     line_spaces = "\n\n"
+    datetime = get_datetime_as_string()
     
     # TAKES ANSWER AND WRITES DATE/TIME, QUESTION AND ANSWER TO SPECIFIED FILE
     
-    for i in range(0, len(question_list)):
-        
+    # opens file as file object using append parameter
+    destination_file = open(log_file_path,'a')
+
+    counter = 1
+    print(question_list)
+    for i in range(0, len(question_list)): 
+
+        counter += 1
         answer = input(line_spaces + question_list[i] + line_spaces)
         
         # outputs log in correct format for user to log file
-        file_path.write(get_datetime_as_string() + line_spaces 
-        + question_list[i] + line_spaces + answer)    
+       
+        destination_file.write(datetime + line_spaces 
+        + question_list[i] + line_spaces + answer + line_spaces)
+    
+    print(counter)  
+    destination_file.close()
+        
+
 
     
 
 
 def format_lines_from_file():
 
-    """"""
-
+    """formatting used for questions list"""
+    
     text_lines = questions_file_path_read.readlines()
+    print(text_lines)
     # removes new lines from each element in the list before returning
     return [i.replace('\n', '') for i in text_lines]
     
@@ -139,16 +153,10 @@ if exists(questions_file_path):
 
         elif sys.argv[1] == 'ask':
 
-            # opens file as file object using append parameter
-            destination_file = open(log_file_path,'a')
-
-            # for i in range(0, len(users_question_list)):
-                
-            #     ask_and_await_answer(users_question_list[i], destination_file)
-
-            ask_and_await_answer(users_question_list, destination_file)
+                       
+            ask_and_await_answer(users_question_list)
             
-            destination_file.close()
+            
 
 
         # clears the users question file
