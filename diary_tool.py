@@ -64,6 +64,7 @@ def ask_and_await_answer(question):
     """asks question, waits for answer, then takes date/time, question and answer
     and stores in a file"""
     
+    #??
     if question == []:
         return 'No questions, run arg input'
 
@@ -72,12 +73,12 @@ def ask_and_await_answer(question):
     answer = input(line_spaces + question + line_spaces)
     
     
-    # takes answer and writes date/time, question and answer to specified file
+    # TAKES ANSWER AND WRITES DATE/TIME, QUESTION AND ANSWER TO SPECIFIED FILE
     
     # opens file as file object using append parameter
     destination_file = open(log_file_path,'a')
     
-    # adds datetime question and answer to file
+    # adds datetime, question and answer to file
     destination_file.write(get_datetime_as_string() + line_spaces 
     + question + line_spaces + answer + line_spaces)
     
@@ -142,6 +143,7 @@ if exists(questions_file_path):
         elif sys.argv[1] == 'ask':
 
             for i in range(0, len(users_question_list)):
+                print(users_question_list[i])
                 ask_and_await_answer(users_question_list[i])
 
 
