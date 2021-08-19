@@ -3,7 +3,7 @@
 
 
 # import used for os specific line seperations
-from os import linesep
+from os import linesep, terminal_size
 
 # import used to check wether users file already exists or needs to be specified
 import sys
@@ -100,17 +100,22 @@ def format_lines_from_file():
 
     """formatting used for questions list"""
     
-    text_lines = questions_file_path_read.readlines()
-    print(text_lines)
+    text_lines = questions_file_path_read.read().split('\n')
     # removes new lines from each element in the list before returning
-    return [i.replace('\n', '') for i in text_lines]
     
+    print(text_lines)
+    for i in range(0, len(text_lines)):
+        print(i)
+        if text_lines[i] == '':
+            text_lines.remove(text_lines[i])
 
-
+    
 
 
 questions_file_path = r"/home/michael-engineer/projects/diary_tool/questions"
 log_file_path = r"/home/michael-engineer/projects/diary_tool/test_file"
+
+# opens file objects as required
 
 questions_file_path_read = open(questions_file_path, "r")
 questions_file_path_append = open(questions_file_path, "a")
