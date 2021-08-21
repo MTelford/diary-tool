@@ -64,9 +64,11 @@ def ask_and_await_answer(question_list):
     """asks question, waits for answer, then takes date/time, question and answer
     and stores in a log file with appropriate line spacing for readability"""
     
-    #??
-    if question_list == None:
-        print('No questions, run arg input')
+
+    #?? ("bug-askcmd-noargneedserror")
+    if question_list == []:
+        print('\n\n No questions currently stored. Run CLI arg input to update questions')
+
 
     line_spaces = "\n\n"
     datetime = get_datetime_as_string()
