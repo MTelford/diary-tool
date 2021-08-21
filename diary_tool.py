@@ -179,7 +179,7 @@ if exists(questions_file_path):
             open(questions_file_path, "w").close()
 
         
-        # deletes everything from the log file for a fresh start
+        # deletes everything from the log file
 
         elif sys.argv[1] == 'reset':
             open(log_file_path, "w").close()
