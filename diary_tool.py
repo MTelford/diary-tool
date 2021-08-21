@@ -65,11 +65,6 @@ def ask_and_await_answer(question_list):
     and stores in a log file with appropriate line spacing for readability"""
     
 
-    #?? ("bug-askcmd-noargneedserror")
-    if question_list == []:
-        print("\n\n No questions currently stored. Run CLI arg 'input' to update questions")
-
-
     line_spaces = "\n\n"
     datetime = get_datetime_as_string()
     
@@ -93,10 +88,7 @@ def ask_and_await_answer(question_list):
     
     #add extra line space in terminal for cleanliness
     print('\n')
-        
 
-
-    
 
 
 def format_lines_from_file():
@@ -158,10 +150,25 @@ if exists(questions_file_path):
         # asks the user the questions that the input and stores results in log file
 
         elif sys.argv[1] == 'ask':
-
-                       
-            ask_and_await_answer(users_question_list)
-            
+            # user error message
+            if users_question_list == []:
+                
+                flag = True
+                while flag:
+                    request = input("\n\n No questions currently stored. Run CLI arg 'input' to update questions, or would you like to update them now? y or n? ")
+                    if request == 'y':
+                        flag = False
+                        questions = get_questions_from_user()
+                        # iterates through list of questions and writes to questions file
+                        for i in questions:
+                            questions_file_path_append.write((i + '\n\n'))                      
+                    elif request == 'n':
+                        break
+                    else:
+                        print("\n\nPlease enter y or n to continue")
+                    
+            if users_question_list != []:
+                ask_and_await_answer(users_question_list)    
             
 
 
