@@ -66,7 +66,7 @@ def ask_and_await_answer(question_list):
     
     #??
     if question_list == None:
-        return 'No questions, run arg input'
+        print('No questions, run arg input')
 
     line_spaces = "\n\n"
     datetime = get_datetime_as_string()
