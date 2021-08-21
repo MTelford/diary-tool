@@ -67,7 +67,7 @@ def ask_and_await_answer(question_list):
 
     #?? ("bug-askcmd-noargneedserror")
     if question_list == []:
-        print('\n\n No questions currently stored. Run CLI arg input to update questions')
+        print("\n\n No questions currently stored. Run CLI arg 'input' to update questions")
 
 
     line_spaces = "\n\n"
