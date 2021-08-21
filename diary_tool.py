@@ -178,7 +178,7 @@ if exists(questions_file_path):
             open(log_file_path, "w").close()
 
         elif sys.argv[1] == 'help':
-            print('use "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch')
+            print('\nuse "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch\n')
 
         else:
             print('Invalid input')
