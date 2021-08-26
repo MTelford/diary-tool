@@ -42,7 +42,7 @@ def get_datetime_as_string():
 def get_questions_from_user():
 
     """ asks user for questions they would like to ask themselves
-        and adds them to a list"""
+        and adds them to a list """
 
     flag = True
     question_list = []
