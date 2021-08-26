@@ -1,4 +1,4 @@
 # diary_tool
-Light program for making diary entries (basic project)
+Light program for making diary entries (basic project).
 
-Currently early prototype stage 
+Currently early prototype stage.
