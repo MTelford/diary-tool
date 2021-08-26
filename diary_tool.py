@@ -106,7 +106,7 @@ def format_lines_from_file():
 
 
 questions_file_path = r"/home/michael-engineer/projects/diary_tool/questions"
-log_file_path = r"/home/michael-engineer/projects/diary_tool/test_file"
+log_file_path = r"/home/michael-engineer/projects/diary_tool/diary_log"
 
 # opens file objects as required
 
