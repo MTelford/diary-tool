@@ -69,7 +69,6 @@ def ask_and_await_answer(question_list):
     and stores in a log file with appropriate line spacing for readability"""
     
 
-    line_spaces = "\n\n"
     datetime = get_datetime_as_string()
     
     # TAKES ANSWER AND WRITES DATE/TIME, QUESTION AND ANSWER TO SPECIFIED FILE
@@ -80,12 +79,12 @@ def ask_and_await_answer(question_list):
     for i in range(0, len(question_list)): 
 
         
-        answer = input(line_spaces + question_list[i] + line_spaces)
+        answer = input('\n\n' + question_list[i] + '\n\n')
         
         # outputs log in correct format for user to log file
        
-        destination_file.write(line_spaces + datetime + line_spaces 
-        + question_list[i] + line_spaces + answer + line_spaces)
+        destination_file.write('\n\n' + datetime + '\n\n' 
+        + question_list[i] + '\n\n' + answer + '\n\n')
         
     
     destination_file.close()
