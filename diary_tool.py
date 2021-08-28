@@ -34,7 +34,8 @@ def get_users_diary_log_path():
 
 def get_datetime_as_string():
 
-    """Function for getting todays date/time as string"""
+    """Function for getting todays date/time as string
+        so it can be added to the users diary log"""
     
     x = datetime.datetime.now()
     time_as_string = x.strftime("%c")
