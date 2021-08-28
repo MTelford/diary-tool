@@ -18,13 +18,15 @@ import datetime
 
 
 
-def get_file_path():
+def get_users_diary_log_path():
     
     """open file dialog window for user to select which file they want to use
         to store their diary log"""
-    
+    # sets up tkinter
     root = tk.Tk()
     root.withdraw()
+    
+    # asks for file
     path_to_file = filedialog.askopenfilename()
     return path_to_file
 
