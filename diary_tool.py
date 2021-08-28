@@ -10,7 +10,7 @@ import sys
 from os.path import exists
 
 
-# import used for asking user to specify file location
+# import used for asking user to specify file location via tkinter GUI window
 import tkinter as tk
 from tkinter import filedialog
 
@@ -20,7 +20,8 @@ import datetime
 
 def get_file_path():
     
-    """open file dialog window for text file location selection"""
+    """open file dialog window for user to select which file they want to use
+        to store their diary log"""
     
     root = tk.Tk()
     root.withdraw()
@@ -131,7 +132,7 @@ if __name__ == '__main__':
             'reset' to delete all log entries and start over """
 
         if len(sys.argv) < 2:
-            print('No argument given. Please use "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch')
+            print('\n\nNo argument given. Please use "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch\n\n')
         elif len(sys.argv) > 2:
             print('Too many arguments given, only 1 is required')
         else:
