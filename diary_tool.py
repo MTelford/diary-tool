@@ -8,6 +8,9 @@ from os import linesep
 # import used to check wether users file already exists or needs to be specified
 import sys
 from os.path import exists
+import os
+
+
 
 
 # import used for asking user to specify file location via tkinter GUI window
@@ -108,7 +111,11 @@ def format_lines_from_file():
     
 if __name__ == '__main__':
 
-
+    file_path = os.path.realpath(__file__)
+    print(file_path)
+    
+    
+    
     questions_file_path = r"/home/michael-engineer/projects/diary_tool/questions"
     log_file_path = r"/home/michael-engineer/projects/diary_tool/diary_log"
 
