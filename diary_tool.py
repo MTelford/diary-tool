@@ -46,14 +46,14 @@ def get_datetime_as_string():
 def get_questions_from_user():
 
     """ asks user for questions they would like to ask themselves
-        and adds them to a list """
+        and adds them to a list, which is later used in function
+        'ask and await answer'. Exits upon user typing QUIT """
 
     flag = True
     question_list = []
-    line_spaces = '\n\n'
     
     while flag:
-        users_question = (input(line_spaces + 'Enter your question here, or type QUIT ' + line_spaces))
+        users_question = (input('\n\nEnter your question here, or type QUIT \n\n'))
         if users_question == 'QUIT':
             flag = False
         else:
