@@ -103,89 +103,90 @@ def format_lines_from_file():
     
 
     
+if __name__ == '__main__':
 
 
-questions_file_path = r"/home/michael-engineer/projects/diary_tool/questions"
-log_file_path = r"/home/michael-engineer/projects/diary_tool/diary_log"
+    questions_file_path = r"/home/michael-engineer/projects/diary_tool/questions"
+    log_file_path = r"/home/michael-engineer/projects/diary_tool/diary_log"
 
-# opens file objects as required
+    # opens file objects as required
 
-questions_file_path_read = open(questions_file_path, "r")
-questions_file_path_append = open(questions_file_path, "a")
-log_file_path_append = open(log_file_path, "a")
-
-
+    questions_file_path_read = open(questions_file_path, "r")
+    questions_file_path_append = open(questions_file_path, "a")
+    log_file_path_append = open(log_file_path, "a")
 
 
-# checks if users questions file exists, if so adds contents of lines to list of questions
 
-if exists(questions_file_path):
-    users_question_list = format_lines_from_file()
-    
 
-    """ THIS AREA takes CLI args to specify which functionality user wants, as follows:
-        'input' to update questions
-        'ask' to ask the questions user has stored previously
-        'clearq' to clear all the users questions
-        'reset' to delete all log entries and start over """
+    # checks if users questions file exists, if so adds contents of lines to list of questions
 
-    if len(sys.argv) < 2:
-        print('No argument given. Please use "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch')
-    elif len(sys.argv) > 2:
-        print('Too many arguments given, only 1 is required')
-    else:
+    if exists(questions_file_path):
+        users_question_list = format_lines_from_file()
         
-        # asks user to input their questions
-        
-        if sys.argv[1] == 'input':
 
-            questions = get_questions_from_user()
+        """ THIS AREA takes CLI args to specify which functionality user wants, as follows:
+            'input' to update questions
+            'ask' to ask the questions user has stored previously
+            'clearq' to clear all the users questions
+            'reset' to delete all log entries and start over """
 
-            # iterates through list of questions and writes to questions file
-            for i in questions:
-
-                questions_file_path_append.write((i + '\n\n'))
-            
-
-        # asks the user the questions that the input and stores results in log file
-
-        elif sys.argv[1] == 'ask':
-            # user error message
-            if users_question_list == []:
-                
-                flag = True
-                while flag:
-                    request = input("\n\n No questions currently stored. Run CLI arg 'input' to update questions, or would you like to update them now? y or n? ")
-                    if request == 'y':
-                        flag = False
-                        questions = get_questions_from_user()
-                        # iterates through list of questions and writes to questions file
-                        for i in questions:
-                            questions_file_path_append.write((i + '\n\n'))                      
-                    elif request == 'n':
-                        break
-                    else:
-                        print("\n\nPlease enter y or n to continue")
-                    
-            if users_question_list != []:
-                ask_and_await_answer(users_question_list)    
-            
-
-
-        # clears the users question file
-
-        elif sys.argv[1] == 'clearq':
-            users_question_list = []
-            open(questions_file_path, "w").close()
-
-        
-        # deletes everything from the log file
-
-        elif sys.argv[1] == 'reset':
-            open(log_file_path, "w").close()
-
-        elif sys.argv[1] == 'help':
-            print('\n\nuse "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch\n\n')
-
+        if len(sys.argv) < 2:
+            print('No argument given. Please use "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch')
+        elif len(sys.argv) > 2:
+            print('Too many arguments given, only 1 is required')
         else:
-            print('Invalid input')
+            
+            # asks user to input their questions
+            
+            if sys.argv[1] == 'input':
+
+                questions = get_questions_from_user()
+
+                # iterates through list of questions and writes to questions file
+                for i in questions:
+
+                    questions_file_path_append.write((i + '\n\n'))
+                
+
+            # asks the user the questions that the input and stores results in log file
+
+            elif sys.argv[1] == 'ask':
+                # user error message
+                if users_question_list == []:
+                    
+                    flag = True
+                    while flag:
+                        request = input("\n\n No questions currently stored. Run CLI arg 'input' to update questions, or would you like to update them now? y or n? ")
+                        if request == 'y':
+                            flag = False
+                            questions = get_questions_from_user()
+                            # iterates through list of questions and writes to questions file
+                            for i in questions:
+                                questions_file_path_append.write((i + '\n\n'))                      
+                        elif request == 'n':
+                            break
+                        else:
+                            print("\n\nPlease enter y or n to continue")
+                        
+                if users_question_list != []:
+                    ask_and_await_answer(users_question_list)    
+                
+
+
+            # clears the users question file
+
+            elif sys.argv[1] == 'clearq':
+                users_question_list = []
+                open(questions_file_path, "w").close()
+
+            
+            # deletes everything from the log file
+
+            elif sys.argv[1] == 'reset':
+                open(log_file_path, "w").close()
+
+            elif sys.argv[1] == 'help':
+                print('\n\nuse "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch\n\n')
+
+            else:
+                print('Invalid input')
