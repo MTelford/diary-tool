@@ -60,7 +60,7 @@ def get_questions_from_user():
             question_list.append(users_question)
     
     return question_list
-
+    
 
 
 def ask_and_await_answer(question_list):
@@ -93,37 +93,52 @@ def ask_and_await_answer(question_list):
     print('\n')
 
 
+def set_questions_file_path():
+
+    """ Returns local path to users questions file dynamically """
+
+    current_file_path = os.path.realpath(__file__)   
+        
+    questions_file_path = current_file_path.replace('diary_tool.py', 'questions')
+
+    return questions_file_path
+    
+
+def set_log_file_path():
+
+
+    """ Returns local path to users diary log file dynamically """
+
+    current_file_path = os.path.realpath(__file__)
+    
+    log_file_path = current_file_path.replace('diary_tool.py', 'diary_log')
+
+    return log_file_path
 
 
     
 if __name__ == '__main__':
 
 
-    """ sets up file paths"""
+    """ sets up file paths """
 
-    current_file_path = os.path.realpath(__file__)
-    
-    # sets file path for users questions dynamically
-    current_file_path.replace('diary_tool.py', 'questions')      
-    
-    questions_file_path = current_file_path.replace('diary_tool.py', 'questions')
-    log_file_path = current_file_path.replace('diary_tool.py', 'diary_log')
+    questions_path = set_questions_file_path()
+    log_file_path = set_log_file_path()
 
+    
     # opens file objects in either read or amend as appropriate
 
-    questions_file_path_read = open(questions_file_path, "r")
-    questions_file_path_append = open(questions_file_path, "a")
-    log_file_path_append = open(log_file_path, "a")
+    questions_file_read = open(questions_path, "r")
+    questions_file_append = open(log_file_path, "a")
+    log_file_append = open(log_file_path, "a")
 
 
     # adds contents of questions file lines to list of questions
     
-    text_lines = questions_file_path_read.read().split('\n')
+    text_lines = questions_file_read.read().split('\n')
 
     # filters unwanted empty elements from list (streamlines ask command functionality)   
-    users_question_list = list(filter(None, text_lines))
-    
-    
+    users_question_list = list(filter(None, text_lines))        
         
 
     """ THIS AREA takes CLI args to specify which functionality user wants, as follows:
@@ -176,8 +191,7 @@ if __name__ == '__main__':
                         print("\n\nPlease enter y or n to continue")
                     
             if users_question_list != []:
-                ask_and_await_answer(users_question_list)    
-            
+                ask_and_await_answer(users_question_list)             
 
 
         # clears the users question file
