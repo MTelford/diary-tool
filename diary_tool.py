@@ -16,22 +16,6 @@ from tkinter import filedialog
 
 import datetime
 
-
-
-# def get_users_diary_log_path():
-    
-#     """open file dialog window for user to select which file they want to use
-#         to store their diary log"""
-#     # sets up tkinter
-#     root = tk.Tk()
-#     root.withdraw()
-    
-#     # asks for file
-#     path_to_file = filedialog.askopenfilename()
-#     return path_to_file
-
-
-
 def get_datetime_as_string():
 
     """Function for getting todays date/time as string
@@ -149,6 +133,7 @@ if __name__ == '__main__':
     
     log_file_append = open(log_file_path, "a")
 
+    
     # initializes users question list from locally stored file
     users_question_list = format_stored_questions_for_user()
         
