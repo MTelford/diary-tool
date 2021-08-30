@@ -1,20 +1,10 @@
-
 # TOOL FOR KEEPING A DIARY LOG BASED ON QUESTIONS SPECIFIED AND ASKED BY THE USER
 
-
-# import used for os specific line seperations
-from os import linesep
-
-# import used to check wether users file already exists or needs to be specified
 import sys
-from os.path import exists
 import os
-
-# import used for asking user to specify file location via tkinter GUI window
-import tkinter as tk
-from tkinter import filedialog
-
 import datetime
+
+
 
 def get_datetime_as_string():
 
@@ -221,4 +211,4 @@ if __name__ == '__main__':
             print('\n\nuse "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch\n\n')
 
         else:
-            print('Invalid input')
+            print('\nInvalid input\n')
