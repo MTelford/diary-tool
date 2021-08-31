@@ -15,7 +15,7 @@ def get_datetime_as_string():
     return time_as_string
 
 
-def get_questions_from_user(test_flag=None):
+def get_questions_from_user():
 
     """ Asks user for questions they would like to ask themselves
         and adds them to a list 'users_question_list'. The list is later used in function
@@ -25,10 +25,7 @@ def get_questions_from_user(test_flag=None):
     question_list = []
     
     while flag:
-        # condition that runs if function is called from test not application
-        if test_flag == 'Test':
-            return question_list
-
+        
         users_question = (input('\n\nEnter your question here, or type QUIT \n\n'))
         
         if users_question == 'QUIT':
