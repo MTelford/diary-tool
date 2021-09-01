@@ -14,6 +14,27 @@ def get_datetime_as_string():
     return time_as_string
 
 
+def set_questions_file_path():
+    """ Returns local path to users questions file """
+
+    current_file_path = os.path.realpath(__file__)
+
+    questions_file_path = current_file_path.replace(
+        'diary_tool.py', 'questions')
+
+    return questions_file_path
+
+
+def set_log_file_path():
+    """ Returns local path to users diary log file """
+
+    current_file_path = os.path.realpath(__file__)
+
+    log_file_path = current_file_path.replace('diary_tool.py', 'diary_log')
+
+    return log_file_path
+
+
 def get_questions_from_user():
     """ Asks user for questions they would like to ask themselves
         and adds them to a list 'users_question_list'. The list is
@@ -67,27 +88,6 @@ def ask_and_await_answer(question_list):
     print('\n')
 
 
-def set_questions_file_path():
-    """ Returns local path to users questions file """
-
-    current_file_path = os.path.realpath(__file__)
-
-    questions_file_path = current_file_path.replace(
-        'diary_tool.py', 'questions')
-
-    return questions_file_path
-
-
-def set_log_file_path():
-    """ Returns local path to users diary log file """
-
-    current_file_path = os.path.realpath(__file__)
-
-    log_file_path = current_file_path.replace('diary_tool.py', 'diary_log')
-
-    return log_file_path
-
-
 def format_stored_questions_for_user():
     """ Takes questions file object for reading; reads contents
         and simultaneously removes new lines and empty elements
@@ -113,7 +113,6 @@ if __name__ == '__main__':
 
     questions_file_read = open(questions_path, "r")
     questions_file_append = open(log_file_path, "a")
-
     log_file_append = open(log_file_path, "a")
 
     # initializes users question list from locally stored file
