@@ -6,7 +6,6 @@ import datetime
 
 
 def get_datetime_as_string():
-
     """Function for getting todays date/time as string
         so it can be added to the users diary log"""
 
@@ -16,7 +15,6 @@ def get_datetime_as_string():
 
 
 def get_questions_from_user():
-
     """ Asks user for questions they would like to ask themselves
         and adds them to a list 'users_question_list'. The list is
         later used in function 'ask_and_await_answer'. Exits upon user
@@ -40,7 +38,6 @@ def get_questions_from_user():
 
 
 def ask_and_await_answer(question_list):
-
     """
     Asks user defined question from locally stored question file,
     waits for answer, then takes date/time, question and answer
@@ -61,30 +58,27 @@ def ask_and_await_answer(question_list):
 
         # outputs log in correct format for user to log file
 
-        destination_file.write('\n\n' + datetime + '\n\n' 
-        + question_list[i] + '\n\n' + answer + '\n\n')
-
+        destination_file.write('\n\n' + datetime + '\n\n'
+                               + question_list[i] + '\n\n' + answer + '\n\n')
 
     destination_file.close()
 
-    #add extra line space in terminal for cleanliness
+    # add extra line space in terminal for cleanliness
     print('\n')
 
 
 def set_questions_file_path():
-
     """ Returns local path to users questions file """
 
-    current_file_path = os.path.realpath(__file__)   
+    current_file_path = os.path.realpath(__file__)
 
-    questions_file_path = current_file_path.replace('diary_tool.py', 'questions')
+    questions_file_path = current_file_path.replace(
+        'diary_tool.py', 'questions')
 
     return questions_file_path
 
 
 def set_log_file_path():
-
-
     """ Returns local path to users diary log file """
 
     current_file_path = os.path.realpath(__file__)
@@ -95,27 +89,24 @@ def set_log_file_path():
 
 
 def format_stored_questions_for_user():
-
     """ Takes questions file object for reading; reads contents
         and simultaneously removes new lines and empty elements
         for when terminal output required."""
 
-    # adds contents of questions file lines to list of questions    
+    # adds contents of questions file lines to list of questions
     text_lines = questions_file_read.read().split('\n')
 
-    # filters unwanted empty elements from list   
-    question_list = list(filter(None, text_lines))        
+    # filters unwanted empty elements from list
+    question_list = list(filter(None, text_lines))
     return question_list
 
 
 if __name__ == '__main__':
 
-
     """ Functions that set up file paths """
 
     questions_path = set_questions_file_path()
     log_file_path = set_log_file_path()
-
 
     # opens file objects in either read or amend as appropriate for application
     # (some instances we want to read, others append)
@@ -125,12 +116,12 @@ if __name__ == '__main__':
 
     log_file_append = open(log_file_path, "a")
 
-
     # initializes users question list from locally stored file
     users_question_list = format_stored_questions_for_user()
 
+    """ THIS AREA takes CLI args to specify which functionality
+        user wants, as follows:
 
-    """ THIS AREA takes CLI args to specify which functionality user wants, as follows:
         'input' to update questions
         'ask' to ask the questions user has stored previously
         'clearq' to clear all the users questions
@@ -139,7 +130,12 @@ if __name__ == '__main__':
     # when no CLI arg is given
 
     if len(sys.argv) < 2:
-        print('\n\nNo argument given. Please use "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch\n\n')
+        print("\n\nNo argument given. "
+              " Please use 'input' to update questions, "
+              "'ask' to ask your questions, "
+              "'clearq' to clear your questions, "
+              " or 'reset' to delete all log entries "
+              " and start from scratch\n\n")
 
     # when there are too many CLI args
 
@@ -154,32 +150,41 @@ if __name__ == '__main__':
 
             questions = get_questions_from_user()
 
-            # then iterates through list of questions and writes to questions file using question file object for appending
+            # then iterates through list of questions
+            # and writes to questions file using
+            # question file object for appending
+
             for i in questions:
 
                 questions_file_append.write((i + '\n\n'))
 
-
-
-
         elif sys.argv[1] == 'ask':
 
-        # asks the user the questions that they previously input and stores results in log file
-        # or if no questions are present, they are given the option to store questions with y or n    
+            # asks the user the questions
+            # that they previously input
+            # and stores results in log file
+            # or if no questions are present,
+            # they are given the option to
+            # store questions with y or n
 
             if users_question_list == []:
 
                 flag = True
                 while flag:
-                    request = input("\n\n No questions currently stored. Run CLI arg 'input' to update questions, or would you like to update them now? y or n? \n\n")
+                    request = input(
+                        "\n\n No questions currently stored. "
+                        "Run CLI arg 'input' to update questions, "
+                        "or would you like to update them now? y or n? \n\n")
 
                     if request == 'y':
                         flag = False
                         questions = get_questions_from_user()
 
-                        # iterates through list of questions and writes to questions file
+                        # iterates through list of questions
+                        # and writes to questions file
+
                         for i in questions:
-                            questions_file_append.write((i + '\n\n'))                      
+                            questions_file_append.write((i + '\n\n'))
 
                     elif request == 'n':
                         break
@@ -187,8 +192,7 @@ if __name__ == '__main__':
                         print("\n\nPlease enter y or n to continue")
 
             if users_question_list != []:
-                ask_and_await_answer(users_question_list)             
-
+                ask_and_await_answer(users_question_list)
 
         # clears the users question file
 
@@ -202,7 +206,6 @@ if __name__ == '__main__':
 
             print('\n\nQuestions cleared\n\n')
 
-
         # deletes everything from the log file
 
         elif sys.argv[1] == 'reset':
@@ -210,7 +213,11 @@ if __name__ == '__main__':
             print('\n\nDiary log reset\n\n')
 
         elif sys.argv[1] == 'help':
-            print('\n\nuse "input" to update questions, "ask" to ask your questions, "clearq" to clear your questions, or "reset" to delete all log entries and start from scratch\n\n')
+            print("\n\nuse 'input' to update questions, "
+                  "'ask' to ask your questions, "
+                  "'clearq' to clear your questions, "
+                  "or 'reset' to delete all log entries "
+                  "and start from scratch\n\n")
 
         else:
             print('\nInvalid input\n')
