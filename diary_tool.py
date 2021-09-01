@@ -6,11 +6,11 @@ import datetime
 
 
 def get_datetime_as_string():
-    """Function for getting todays date/time as string
-        so it can be added to the users diary log"""
+    """ Function for getting todays date/time as string
+        so it can be added to the users diary log """
 
-    x = datetime.datetime.now()
-    time_as_string = x.strftime("%c")
+    time = datetime.datetime.now()
+    time_as_string = time.strftime("%c")
     return time_as_string
 
 
@@ -60,15 +60,13 @@ def get_questions_from_user():
 
 def ask_and_await_answer(question_list):
     """
-    Asks user defined question from locally stored question file,
+    Asks user defined questions from locally stored question file,
     waits for answer, then takes date/time, question and answer
     and stores in a log file with appropriate line spacing for
     readability
     """
 
     datetime = get_datetime_as_string()
-
-    # TAKES ANSWER AND WRITES DATE/TIME, QUESTION AND ANSWER TO SPECIFIED FILE
 
     # opens file as file object using append parameter
     destination_file = open(log_file_path, 'a')
@@ -77,21 +75,22 @@ def ask_and_await_answer(question_list):
 
         answer = input('\n\n' + question_list[i] + '\n\n')
 
-        # outputs log in correct format for user to log file
-
+        # outputs answer to questions in correct format
+        # to log file
         destination_file.write('\n\n' + datetime + '\n\n'
                                + question_list[i] + '\n\n' + answer + '\n\n')
 
     destination_file.close()
 
-    # add extra line space in terminal for cleanliness
+    # add extra line space in terminal for readability
     print('\n')
 
 
 def format_stored_questions_for_user():
     """ Takes questions file object for reading; reads contents
         and simultaneously removes new lines and empty elements
-        for when terminal output required."""
+        for when function 'ask_and_await_answer needs to ask
+        user questions in CLI"""
 
     # adds contents of questions file lines to list of questions
     text_lines = questions_file_read.read().split('\n')
@@ -206,13 +205,12 @@ if __name__ == '__main__':
             print('\n\nQuestions cleared\n\n')
 
         # deletes everything from the log file
-
         elif sys.argv[1] == 'reset':
             open(log_file_path, "w").close()
             print('\n\nDiary log reset\n\n')
 
         elif sys.argv[1] == 'help':
-            print("\n\nuse 'input' to update questions, "
+            print("\n\nUse 'input' to update questions, "
                   "'ask' to ask your questions, "
                   "'clearq' to clear your questions, "
                   "or 'reset' to delete all log entries "
