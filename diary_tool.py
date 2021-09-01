@@ -206,9 +206,6 @@ if __name__ == '__main__':
 
         # deletes everything from the log file
         elif sys.argv[1] == 'reset':
-            # print(type(log_file_path))
-            # print(log_file_path)
-
             open(log_file_path, "w").close()
             print('\n\nDiary log reset\n\n')
 
