@@ -4,6 +4,7 @@ import pathlib
 
 from diary_tool_main.diary_tool import set_log_file_path
 
+
 class TestSetLogFilePath(unittest.TestCase):
     def test_set_log_file_path(self):
         """
@@ -21,8 +22,6 @@ class TestSetLogFilePath(unittest.TestCase):
 
         self.assertEqual(main_path, func_path)
 
+
 if __name__ == '__main__':
     unittest.main()
-
-    
-    
