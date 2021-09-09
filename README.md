@@ -2,4 +2,4 @@
 
 Basic program for making diary entries (beginner project).
 
-Currently early prototype stage.
+#### [TABLE OF CONTENTS]
