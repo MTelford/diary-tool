@@ -1,25 +1,26 @@
-import tkinter as tk
-import os
+from tkinter import *
 
+root = Tk()
 
-root = tk.Tk()
+# change root window h, w and border
 
-# place a label on the root window
-message = tk.Label(root, text="Hello, World!")
-message.pack()
-
-# change window name
-
-root.title('excellent')
-
-# change window h, w and border
-
-root.geometry('1920x1080+50+50')
+root.geometry('1920x1080')
 root.minsize('600', '400')
 root.maxsize('1920', '1080')
-# root.iconbitmap(os.path.dirname(os.path.abspath(__file__)) + '/diary_tool_logo.ico')
 
-# path = os.path.dirname(os.path.abspath(__file__)) + '/diary_tool_logo.ico'
+
+# __________________________________
+
+
+
+
+
+
+
+
+
+
+
 
 
 # keep the window displaying
