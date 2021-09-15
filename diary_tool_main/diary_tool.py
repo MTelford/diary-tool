@@ -1,6 +1,5 @@
 # TOOL FOR KEEPING A DIARY LOG BASED ON QUESTIONS SPECIFIED BY THE USER
 
-from posixpath import split
 import sys
 import os
 import datetime
