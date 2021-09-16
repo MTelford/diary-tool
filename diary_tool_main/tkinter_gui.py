@@ -18,11 +18,27 @@ def test_func():
 
 def question_input():
     test_func()
+    # initialize new window
     input_window = Tk()
     input_window.geometry('600x400+700+370')
     
-    input_field = Entry(input_window)
-    input_field.place(relx=0.5, rely=0.5)
+    # add input field
+    input_field = Entry(input_window, width=40, justify='center')
+    input_field.place(relx=0.5, rely=0.3, anchor=CENTER)
+    
+    # add question button
+    add_btn = Button(input_window, width=10, text='ADD')
+    add_btn.place(relx=0.5, rely=0.5, anchor=CENTER)
+    
+    # quit from adding questions
+    quit_btn = Button(input_window, width=10, text='QUIT', command=input_window.destroy)
+    quit_btn.place(relx=0.5, rely=0.6, anchor=CENTER)
+    
+    
+
+
+    
+    #mainloop
     input_window.mainloop()
 
 
