@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import messagebox
+import tkinter
 from diary_tool import *
 
 
@@ -14,6 +16,8 @@ root = Tk()
 root.geometry('1920x1080')
 root.minsize('600', '400')
 root.maxsize('1920', '1080')
+
+
 
 # define functions for gui use
 
@@ -72,9 +76,7 @@ def get_questions():
     return question_list
 
 
-
-
-
+questions_counter = 0
 
 def ask_questions():
      # initialize new window
@@ -83,7 +85,7 @@ def ask_questions():
     
     # get questions from file
     questions = get_questions()
-    
+        
 
     if questions == []:
         error_label = Label(input_window, text="No questions")
@@ -93,26 +95,37 @@ def ask_questions():
         question_box = Text(input_window, width=40, height=5)
         question_box.place(relx=0.5, rely=0.25, anchor=CENTER)
         
-        question_box.insert(END, questions[0])
+        question_box.insert(END, questions[questions_counter])
 
         # adds entry field for user to answer questions
         answer_field = Entry(input_window, width=40)
         answer_field.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-        def write_to_log():
+        def write_to_log():          
             
-            questions_counter = 0
-            flag = True
+            # global var allows us to iterate through list as function
+            # is called repeatedly
+            global questions_counter      
 
-            while flag:
-                questions = get_questions()
-                log_file = open(log_file_path, 'a')
+            questions = get_questions()
+            log_file = open(log_file_path, 'a')
 
-                log_file.write(get_datetime_as_string() + '\n\n' +
-                                questions[questions_counter] + '\n\n' + 
-                                answer_field.get() + '\n\n')
-                answer_field.delete(0, END)
-                questions_counter += 1
+            log_file.write(get_datetime_as_string() + '\n\n' +
+                            questions[questions_counter] + '\n\n' + 
+                            answer_field.get() + '\n\n')
+            
+            log_file.close()
+            
+            # refreshes answer field for next answer
+            answer_field.delete(0, END)            
+            
+            questions_counter += 1
+            question_box.delete(1.0, END)
+            # inserts new question into question box for user
+            if questions_counter < len(questions): 
+                question_box.insert(END, questions[questions_counter])
+            else:
+                messagebox.showinfo('Attention', 'Log entry complete' )
             
          
 
