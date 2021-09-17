@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import messagebox
-import tkinter
 from diary_tool import *
 
 
@@ -17,16 +16,14 @@ root.geometry('1920x1080')
 root.minsize('600', '400')
 root.maxsize('1920', '1080')
 
+
+# adds window for showing users questions/diary log
+
 log_box = Text(root, width=80, height=20)
 log_box.place(relx=0.5, rely=0.25, anchor=CENTER)
 
 
-
 # define functions for gui use
-
-def test_func():
-    myLabel = Label(root, text="hello")
-    myLabel.pack()
 
 def add_questions():
     
@@ -142,6 +139,7 @@ def ask_questions():
         add_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
 
         input_window.mainloop()
+
 
 def display_log():
 
