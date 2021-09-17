@@ -2,7 +2,7 @@
 
 _Diary Tool_
 
-A tool for entering custom questions that the user can ask themselves and record reponses in a log file
+A tool for entering custom questions that the user can ask themselves and record responses in a log file
 
 ## Description
 
