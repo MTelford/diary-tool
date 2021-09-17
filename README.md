@@ -24,16 +24,20 @@ Clone the repo via your preferred method
 
 ### Executing program
 
-First, navigate to the cloned directory and then into /diary_tool_main
+First, navigate to the cloned directory and then into ```/diary_tool_main```
 
 * For the command line version, run ```python3 diary_tool.py``` and all available commands will be listed. Alternatively, you can run ```python3 diary_tool.py help``` for additonal info.
 
-* For the GUI version, navigate into /diary_tool_main and run ``` python3 tkinter_gui.py ```
+* For the GUI version, navigate into ```/diary_tool_main``` and run ``` python3 tkinter_gui.py ```
+
+### Running tests
+
+A suite of unit tests have been written for the code base. <br></br>
+From ```/diary_tool``` (parent of ```/diary_tool_main```) run ``` python3 -m unittest discover -s tests ```
 
 ## Help
 
-You can run ```python3 diary_tool.py help```
-for the programs help information 
+You can run ```python3 diary_tool.py help``` from ```/diary_tool_main``` for the programs help information 
 
 ## Authors
 
