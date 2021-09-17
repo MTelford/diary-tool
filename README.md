@@ -1,4 +1,4 @@
-# Project Title
+# Diary Tool Application
 
 _Diary Tool_
 
@@ -7,30 +7,28 @@ A tool for entering custom questions that the user can ask themselves and record
 ## Description
 
 The inital idea for this application is to enter custom questions which the user can ask themselves and keep their responses in a log file.
-This might be useful for the user to monitor their own responses over time and locate patterns of thinking. <br></br>
+This might be useful for the user to monitor their own responses over time and identify patterns of thinking, or simply for fun.
 
-The project is currently in it's prototype phase. Future developement will include a GUI, search by date feature, and potentially some form of log file analytics
-and data representation for a better user experience.
+The program is built using Python 3.9 and has both a command line version and a GUI version (.exe GUI version to come)
 
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+Python 3.9 <br></br>
+PIP
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+Clone the repo via your preferred method
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+First, navigate to the cloned directory and then into /diary_tool_main
+
+* For the command line version, run ```python3 diary_tool.py``` and all available commands will be listed. Alternatively, you can run ```python3 diary_tool.py help``` for additonal info.
+
+* For the GUI version, navigate into /diary_tool_main and run ``` python3 tkinter_gui.py ```
 
 ## Help
 
