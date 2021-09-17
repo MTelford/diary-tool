@@ -16,7 +16,7 @@ The program is built using Python 3.9 and has both a command line version and a 
 ### Dependencies
 
 Python 3.9 <br></br>
-PIP
+
 
 ### Installing
 
