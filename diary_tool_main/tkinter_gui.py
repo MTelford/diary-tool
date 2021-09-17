@@ -17,6 +17,9 @@ root.geometry('1920x1080')
 root.minsize('600', '400')
 root.maxsize('1920', '1080')
 
+log_box = Text(root, width=80, height=20)
+log_box.place(relx=0.5, rely=0.25, anchor=CENTER)
+
 
 
 # define functions for gui use
@@ -64,8 +67,9 @@ def clear_questions():
 
 def reset_log():
     # resets contents of the log file to nothing
-    open(log_file_path, 'w').close()  
-
+    open(log_file_path, 'w').close()
+    display_log()  
+    
 
 def get_questions():
     question_file = open(questions_path, 'r')
@@ -79,6 +83,7 @@ def get_questions():
 questions_counter = 0
 
 def ask_questions():
+     
      # initialize new window
     input_window = Tk()
     input_window.geometry('600x400+700+370')
@@ -86,6 +91,7 @@ def ask_questions():
     # get questions from file
     questions = get_questions()
         
+    # warning if no question available
 
     if questions == []:
         error_label = Label(input_window, text="No questions")
@@ -103,14 +109,14 @@ def ask_questions():
 
         def write_to_log():          
             
-            # global var allows us to iterate through list as function
-            # is called repeatedly
+            # global var allows us to iterate through list as 
+            # this function is called repeatedly
             global questions_counter      
 
             questions = get_questions()
             log_file = open(log_file_path, 'a')
 
-            log_file.write(get_datetime_as_string() + '\n\n' +
+            log_file.write('\n\n' + get_datetime_as_string() + '\n\n' +
                             questions[questions_counter] + '\n\n' + 
                             answer_field.get() + '\n\n')
             
@@ -121,12 +127,14 @@ def ask_questions():
             
             questions_counter += 1
             question_box.delete(1.0, END)
+            
             # inserts new question into question box for user
             if questions_counter < len(questions): 
                 question_box.insert(END, questions[questions_counter])
             else:
                 messagebox.showinfo('Attention', 'Log entry complete' )
-            
+                questions_counter = 0
+                input_window.destroy()
          
 
         # add button to add question
@@ -135,10 +143,30 @@ def ask_questions():
 
         input_window.mainloop()
 
+def display_log():
+
+    log_box = Text(root, width=80, height=20)
+    log_box.place(relx=0.5, rely=0.25, anchor=CENTER)
+    
+    log_file = open(log_file_path, 'r')
+    log_file_contents = log_file.read()
+    
+    log_box.insert(END, log_file_contents)
+
+    log_file.close()
 
 
+def show_questions():
+    
+    log_box = Text(root, width=80, height=20)
+    log_box.place(relx=0.5, rely=0.25, anchor=CENTER)
+    
+    questions_file = open(questions_path, 'r')
+    questions_file_contents = questions_file.read()
+    
+    log_box.insert(END, questions_file_contents)
 
-
+    questions_file.close()
 
 
 # setting up control buttons
@@ -147,6 +175,8 @@ ask_btn = Button(root, text="ASK MY QUESTIONS", width=22, command=ask_questions)
 input_questions_btn = Button(root, text="INPUT QUESTIONS", width=22, command=add_questions)
 clear_questions_btn = Button(root, text="CLEAR QUESTIONS", width=22, command=clear_questions)
 reset_log_btn = Button(root, text="RESET LOG", width=22, command=reset_log)
+display_log_btn = Button(root, text="DISPLAY LOG", width=22, command=display_log)
+show_questions_btn = Button(root, text="SHOW QUESTIONS", width=22, command=show_questions)
 
 # positioning buttons using rel which is relative to parent window
 
@@ -154,6 +184,8 @@ ask_btn.place(relx=0.5, rely=0.6, anchor=CENTER)
 input_questions_btn.place(relx=0.5, rely=0.65, anchor=CENTER)
 clear_questions_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
 reset_log_btn.place(relx=0.5, rely=0.75, anchor=CENTER)
+display_log_btn.place(relx=0.5, rely=0.82, anchor=CENTER)
+show_questions_btn.place(relx=0.5, rely=0.87, anchor=CENTER)
 
 
 # keep the window displaying
