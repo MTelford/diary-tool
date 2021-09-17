@@ -15,8 +15,8 @@ root = Tk()
 root.geometry('1920x1080')
 root.minsize('600', '400')
 root.maxsize('1920', '1080')
-root.attributes('-zoomed', True)
 root.title("Diary Tool Application")
+
 
 
 
