@@ -55,17 +55,22 @@ def add_questions():
 
     
 def clear_questions():
-    # resets the list that stores the questions for writing
-    question_list = []
-
-    # deletes contents of questions file
-    open(questions_path, "w").close()
+    
+    action = messagebox.askyesnocancel('Warning', 'Are you sure you want to reset your log?')
+    
+    if action:   
+        # deletes contents of questions file
+        open(questions_path, "w").close()
+        show_questions()
 
 
 def reset_log():
+    
     # resets contents of the log file to nothing
-    open(log_file_path, 'w').close()
-    display_log()  
+    action = messagebox.askyesnocancel('Warning', 'Are you sure you want to reset your log?')
+    if action:    
+        open(log_file_path, 'w').close()
+        display_log()  
     
 
 def get_questions():
@@ -169,21 +174,21 @@ def show_questions():
 
 # setting up control buttons
 
-ask_btn = Button(root, text="ASK MY QUESTIONS", width=22, command=ask_questions)
+ask_questions_btn = Button(root, text="ASK MY QUESTIONS", width=22, command=ask_questions)
 input_questions_btn = Button(root, text="INPUT QUESTIONS", width=22, command=add_questions)
+show_questions_btn = Button(root, text="SHOW QUESTIONS", width=22, command=show_questions)
+display_log_btn = Button(root, text="DISPLAY LOG", width=22, command=display_log)
 clear_questions_btn = Button(root, text="CLEAR QUESTIONS", width=22, command=clear_questions)
 reset_log_btn = Button(root, text="RESET LOG", width=22, command=reset_log)
-display_log_btn = Button(root, text="DISPLAY LOG", width=22, command=display_log)
-show_questions_btn = Button(root, text="SHOW QUESTIONS", width=22, command=show_questions)
 
 # positioning buttons using rel which is relative to parent window
 
-ask_btn.place(relx=0.5, rely=0.6, anchor=CENTER)
+ask_questions_btn.place(relx=0.5, rely=0.6, anchor=CENTER)
 input_questions_btn.place(relx=0.5, rely=0.65, anchor=CENTER)
-clear_questions_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
-reset_log_btn.place(relx=0.5, rely=0.75, anchor=CENTER)
-display_log_btn.place(relx=0.5, rely=0.82, anchor=CENTER)
-show_questions_btn.place(relx=0.5, rely=0.87, anchor=CENTER)
+show_questions_btn.place(relx=0.5, rely=0.7, anchor=CENTER)
+display_log_btn.place(relx=0.5, rely=0.75, anchor=CENTER)
+clear_questions_btn.place(relx=0.5, rely=0.82, anchor=CENTER)
+reset_log_btn.place(relx=0.5, rely=0.87, anchor=CENTER)
 
 
 # keep the window displaying
