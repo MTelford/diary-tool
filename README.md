@@ -44,6 +44,8 @@ You can run ```python3 diary_tool.py help``` from ```/diary_tool_main``` for the
 _Michael Telford_ <br></br>
 https://github.com/MTelford/
 
+*Project management and developement cycle listed on project board at https://github.com/MTelford/diary_tool/projects/1
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
