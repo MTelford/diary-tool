@@ -61,7 +61,7 @@ def add_questions():
     
 def clear_questions():
     
-    action = messagebox.askyesnocancel('Warning', 'Are you sure you want to reset your log?')
+    action = messagebox.askyesnocancel('Warning', 'Are you sure you want to clear your questions?')
     
     if action:   
         # deletes contents of questions file
