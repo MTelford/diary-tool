@@ -15,6 +15,8 @@ root = Tk()
 root.geometry('1920x1080')
 root.minsize('600', '400')
 root.maxsize('1920', '1080')
+root.title("Diary Tool Application")
+
 
 
 # adds window for showing users questions/diary log
@@ -30,6 +32,8 @@ def add_questions():
     # initialize new window
     input_window = Tk()
     input_window.geometry('600x400+700+370')
+    input_window.title("Question Entry Window")
+
     
     # add input field
     input_field = Entry(input_window, width=40, justify='center')
@@ -89,7 +93,8 @@ def ask_questions():
      # initialize new window
     input_window = Tk()
     input_window.geometry('600x400+700+370')
-    
+    input_window.title("My Questions")
+
     # get questions from file
     questions = get_questions()
         
