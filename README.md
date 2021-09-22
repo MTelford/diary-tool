@@ -2,7 +2,7 @@
 
 _Diary Tool_
 
-A tool for entering custom questions that the user can ask themselves and record reponses in a log file
+A tool for entering custom questions that the user can ask themselves and record responses in a log file
 
 ## Description
 
@@ -15,8 +15,8 @@ The program is built using Python 3.9 and has both a command line version and a 
 
 ### Dependencies
 
-Python 3.9 <br></br>
-PIP
+Python 3.9 
+
 
 ### Installing
 
