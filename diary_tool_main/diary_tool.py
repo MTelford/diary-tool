@@ -20,7 +20,7 @@ def set_questions_file_path():
     current_file_path = os.path.realpath(__file__)
 
     questions_file_path = current_file_path.replace(
-        'diary_tool.py', 'questions')
+        'diary_tool.py', 'questions.txt')
 
     return questions_file_path
 
@@ -30,7 +30,7 @@ def set_log_file_path():
 
     current_file_path = os.path.realpath(__file__)
 
-    log_file_path = current_file_path.replace('diary_tool.py', 'diary_log')
+    log_file_path = current_file_path.replace('diary_tool.py', 'diary_log.txt')
 
     return log_file_path
 
