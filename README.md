@@ -9,13 +9,13 @@ A tool for entering custom questions that the user can ask themselves and record
 The inital idea for this application is to enter custom questions which the user can ask themselves and keep their responses in a log file.
 This might be useful for the user to monitor their own responses over time and identify patterns of thinking, or simply for fun.
 
-The program is built using Python 3.9 and has both a command line version and a GUI version (.exe GUI version to come)
+The program is built using Python 3.8 and has both a command line version and a GUI version (.exe GUI version to come)
 
 ## Getting Started
 
 ### Dependencies
 
-Python 3.9 
+Python 3.8+
 
 
 ### Installing
